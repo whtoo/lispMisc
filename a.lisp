@@ -36,4 +36,6 @@
 		 ((< x (first (second pairs)))
 		  (list (first pairs) (second pairs))
 		  )
-		 (t (nearPair x (rest pairs)))))
+		 (t (nearPair x (rest pairs)))
+		)
+)
