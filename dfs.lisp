@@ -23,12 +23,16 @@
 	(cond ((null nodes) nil)
 	;;return the first node if it is a goal node
 		((funcall goalp (first nodes)) (first nodes))
-		(t (dfs (append (funcall next (first nodes))
+		(t (progn 
+			(format t "~{ ~a ~% ~}" (append (funcall next (first nodes))
+							(rest nodes)))
+			(dfs (append (funcall next (first nodes))
 							(rest nodes))
 				goalp
-				next))))
+				next)
+		))))
 ;;test dfs
 (dfs (list tree)
-	#'(lambda (x) (tree-print x) (eq 'g (tree-label x)))
+	#'(lambda (x) (eq 'g (tree-label x)))
 	#'tree-children)
 	
